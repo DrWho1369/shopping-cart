@@ -34,31 +34,39 @@ Objective: Develop a program to:
 
 # Create variables that will be used to store items and their prices as strings
 
-items_list = ""
-item_prices = []
+items_list = "Carrot"
+item_prices = [10.99]
 
 # ** Displaying a list of items stored in a string
 
 done = False
 pointer = 0
 counter = 1
+total_cost = 0.0
 
-while (not done):
+while not done:
     print("\n")
     print("-"*80)
     print("This is your shopping cart:")
        # Print items in the list formatted neatly
     # Find the next occurence of the , by specifying the start value
-    while (not done):
+    while not done:
         index = items_list.find(",", pointer)
 
         if index == -1:
             done = True
             index = len(items_list)
         
-        print("Item {:2}: \t {}".format(counter, list[pointer:index]))
+        item_name = items_list[pointer:index].strip()
+        item_price = item_prices[counter - 1]
+        
+        print(f"Item {counter:2}: \t {item_name}\t\tPrice: £{item_price:.2f}")
+
         counter += 1
         pointer = index + 1
+        continue
+   
+    print("\nTotal Cost: £{:.2f}".format(total_cost))
     # Display the user a clear menu and cart until continously until checkout
 
     print("-" * 80)
@@ -75,6 +83,7 @@ while (not done):
         break
     elif choice not in ["1", "2", "3"]:
         print("That is not a valid option")
+        done = False
         continue
 
     if choice == "1":
@@ -86,6 +95,8 @@ while (not done):
         item_prices.append(price)
 
         print("{} has been added to your cart successfully.".format(item))
+        done = False
+        continue
     
     elif choice == "2":
         # Find item that must be removed and check that its in the cart
@@ -98,12 +109,18 @@ while (not done):
             item_prices.pop(index)
     
             print("{} has been removed from cart successfully.".format(remove))
+            done = False
+            continue
         else:
             print("That item is not in your cart silly!")
+            done = False
+            continue
     
     elif choice == "3":
         total_sum = sum(item_prices)
         print("Total cost of your cart is: £", total_sum)
+        done = False
+        continue
 
 
 

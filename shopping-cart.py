@@ -18,11 +18,11 @@ Objective: Develop a program to:
 
 items_list = []
 item_prices = []
-
-
+print("\n")
+print("-" * 80)
+print(f"{"*" * 18} WELCOME TO TOM BAKER'S SHOPPING EXPERIENCE {"*" * 18}")
 # ** Displaying a list of items stored in basket
 while True:
-    print("\n")
     print("-"*80)
     print("This is your shopping cart:")
     print(f"Items in your Cart: {items_list}")    
@@ -36,25 +36,27 @@ while True:
     print("2. Remove an item from your cart")
     print("3. View the total cost of your cart")
     print("4. Checkout")
+    print("-" * 80)
     choice = input("Enter the number of the option you would like to choose:\n")
+    print("-" * 80)
     
     if choice == "4":
     # Exit from the program
-        print("Thank you for shopping with Paws n Cart!")
+        print("*" * 80)
+        print("\nThank you for shopping with Paws n Cart!\n")
+        print("*" * 80)
         break
-    elif choice not in ["1", "2", "3"]:
-        print("That is not a valid option")
-        continue
-
-    if choice == "1":
+    
+    elif choice == "1":
         # Find out item and price and add it to cart
         item_input = input("What item would you like to add to your cart: ")
         price = float(input("How much does the item cost: £"))
         item = item_input.upper()
         items_list.append(item)
         item_prices.append(price)
-
-        print("\n{} has been added to your cart successfully.".format(item))
+        print("-+-" * 27)
+        print(f"{"*" * 15} {item} has been added to your cart successfully. {"*" * 16}")
+        print("-+-" * 27)
         continue
     
     elif choice == "2":
@@ -66,17 +68,27 @@ while True:
             index = items_list.index(remove)
             del items_list[index]
             del item_prices[index]
-            print("{} has been removed from cart successfully.".format(remove))
+            print("-:" * 40)
+            print(f"{"*" * 15} {remove} has been removed from cart successfully. {"*" * 16}")
+            print("-:" * 40)
             continue
         else:
-            print("That item is not in your cart silly!")
+            print("-!-" * 26)
+            print(f"{"*" * 18} That item is not in your cart silly! {"*" * 18}")
+            print("-!-" * 26)
             continue
     
-    # elif choice == "3":
-    #     total_sum = sum(item_prices)
-    #     print("Total cost of your cart is: £", total_sum)
-    #     done = False
-    #     continue
+    elif choice == "3":
+        print(f"- {"-£-" * 26} -")
+        print(f"{"*" * 23} Total cost of your cart is: £ {sum(item_prices)} {"*" * 22}")
+        print(f"- {"-£-" * 26} -")
+        continue
+
+    elif choice not in ["1", "2", "3", "4"]:
+        print("-!-" * 26)
+        print(f"{"*" * 18} That is not a valid option {"*" * 18}")
+        print("-!-" * 26)
+        continue
 
 
 

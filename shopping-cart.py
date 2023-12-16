@@ -10,63 +10,24 @@ Objective: Develop a program to:
 2. Allow user to add and remove items from their cart
 3. Calculate the total cost of the cart when requested
 '''
-# **Code Toolbox**:
-
-# Adding items to a list - use string concatenation to create lists, eg
-
-# list = ""
-# list += ",Apple"
-
-# **Removing items from a list**
-
-# remove = "Apple"
-# occurance = list.find(remove)
-
-# if occurance == 0:
-#     list = list[:len(remove)+1]
-# else:
-#     list = list[:occurence-1] + list[occurence+len(remove):]
-
-
 
 
 ### Step by step task: ###
 
 # Create variables that will be used to store items and their prices as strings
 
-items_list = "Carrot"
-item_prices = [10.99]
+items_list = []
+item_prices = []
 
-# ** Displaying a list of items stored in a string
 
-done = False
-pointer = 0
-counter = 1
-total_cost = 0.0
-
-while not done:
+# ** Displaying a list of items stored in basket
+while True:
     print("\n")
     print("-"*80)
     print("This is your shopping cart:")
-       # Print items in the list formatted neatly
-    # Find the next occurence of the , by specifying the start value
-    while not done:
-        index = items_list.find(",", pointer)
-
-        if index == -1:
-            done = True
-            index = len(items_list)
-        
-        item_name = items_list[pointer:index].strip()
-        item_price = item_prices[counter - 1]
-        
-        print(f"Item {counter:2}: \t {item_name}\t\tPrice: £{item_price:.2f}")
-
-        counter += 1
-        pointer = index + 1
-        continue
-   
-    print("\nTotal Cost: £{:.2f}".format(total_cost))
+    print(f"Items in your Cart: {items_list}")    
+    print(f"Item Prices: {item_prices}")
+    print(f"Total Cost: £ {sum(item_prices)}")
     # Display the user a clear menu and cart until continously until checkout
 
     print("-" * 80)
@@ -83,44 +44,39 @@ while not done:
         break
     elif choice not in ["1", "2", "3"]:
         print("That is not a valid option")
-        done = False
         continue
 
     if choice == "1":
         # Find out item and price and add it to cart
-        item = input("What item would you like to add to your cart: ")
+        item_input = input("What item would you like to add to your cart: ")
         price = float(input("How much does the item cost: £"))
-
-        items_list += "," + item
+        item = item_input.upper()
+        items_list.append(item)
         item_prices.append(price)
 
-        print("{} has been added to your cart successfully.".format(item))
-        done = False
+        print("\n{} has been added to your cart successfully.".format(item))
         continue
     
     elif choice == "2":
         # Find item that must be removed and check that its in the cart
-        remove = input("Which item would you like to remove: ")
-
+        remove_input = input("Which item would you like to remove: ")
+        remove = remove_input.upper()
         if remove in items_list:
             # Remove item from cart and pricelist
             index = items_list.index(remove)
-            items_list = items_list[:index] + items_list[index + len(remove):]
-            item_prices.pop(index)
-    
+            del items_list[index]
+            del item_prices[index]
             print("{} has been removed from cart successfully.".format(remove))
-            done = False
             continue
         else:
             print("That item is not in your cart silly!")
-            done = False
             continue
     
-    elif choice == "3":
-        total_sum = sum(item_prices)
-        print("Total cost of your cart is: £", total_sum)
-        done = False
-        continue
+    # elif choice == "3":
+    #     total_sum = sum(item_prices)
+    #     print("Total cost of your cart is: £", total_sum)
+    #     done = False
+    #     continue
 
 
 

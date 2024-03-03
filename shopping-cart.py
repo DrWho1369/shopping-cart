@@ -11,6 +11,20 @@ Objective: Develop a program to:
 3. Calculate the total cost of the cart when requested
 '''
 
+def choice1():
+    """
+    Find out item and price and add it to cart
+    """
+    # Find out item and price and add it to cart
+    item_input = input("What item would you like to add to your cart: ")
+    price = float(input("How much does the item cost: £"))
+    item = item_input.upper()
+    items_list.append(item)
+    item_prices.append(price)
+    print("-+-" * 27)
+    print(f"{"*" * 15} {item} has been added to your cart successfully. {"*" * 16}")
+    print("-+-" * 27)
+    continue
 
 ### Step by step task: ###
 
@@ -52,16 +66,7 @@ while True:
         break
     
     elif choice == "1":
-        # Find out item and price and add it to cart
-        item_input = input("What item would you like to add to your cart: ")
-        price = float(input("How much does the item cost: £"))
-        item = item_input.upper()
-        items_list.append(item)
-        item_prices.append(price)
-        print("-+-" * 27)
-        print(f"{"*" * 15} {item} has been added to your cart successfully. {"*" * 16}")
-        print("-+-" * 27)
-        continue
+       choice1()
     
     elif choice == "2":
         # Find item that must be removed and check that its in the cart

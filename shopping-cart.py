@@ -26,6 +26,27 @@ def choice1():
     print("-+-" * 27)
     continue
 
+def remove_item():
+    """
+    A function to remove an item from the cart.
+    """
+    # Find item that must be removed and check that its in the cart
+    remove_input = input("Which item would you like to remove: ")
+    remove = remove_input.upper()
+    if remove in items_list:
+        # Remove item from cart and pricelist
+        index = items_list.index(remove)
+        del items_list[index]
+        del item_prices[index]
+        print("-:" * 40)
+        print(f"{"*" * 15} {remove} has been removed from cart successfully. {"*" * 16}")
+        print("-:" * 40)
+        continue
+    else:
+        print("-!-" * 26)
+        print(f"{"*" * 18} That item is not in your cart silly! {"*" * 18}")
+        print("-!-" * 26)
+        continue
 ### Step by step task: ###
 
 # Create variables that will be used to store items and their prices as strings
@@ -66,26 +87,10 @@ while True:
         break
     
     elif choice == "1":
-       choice1()
+        choice1()
     
     elif choice == "2":
-        # Find item that must be removed and check that its in the cart
-        remove_input = input("Which item would you like to remove: ")
-        remove = remove_input.upper()
-        if remove in items_list:
-            # Remove item from cart and pricelist
-            index = items_list.index(remove)
-            del items_list[index]
-            del item_prices[index]
-            print("-:" * 40)
-            print(f"{"*" * 15} {remove} has been removed from cart successfully. {"*" * 16}")
-            print("-:" * 40)
-            continue
-        else:
-            print("-!-" * 26)
-            print(f"{"*" * 18} That item is not in your cart silly! {"*" * 18}")
-            print("-!-" * 26)
-            continue
+        remove_item()
     
     elif choice == "3":
         print(f"- {"-£-" * 26} -")

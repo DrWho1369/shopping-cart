@@ -23,22 +23,26 @@ print("-" * 80)
 print(f"{"*" * 18} WELCOME TO TOM BAKER'S SHOPPING EXPERIENCE {"*" * 18}")
 # ** Displaying a list of items stored in basket
 while True:
-    print("-"*80)
-    print("This is your shopping cart:")
-    print(f"Items in your Cart: {items_list}")    
-    print(f"Item Prices: {item_prices}")
-    print(f"Total Cost: £ {sum(item_prices)}")
-    # Display the user a clear menu and cart until continously until checkout
+    # Standardizing variable names and improving readability
+    print("-" * 80)
+    print("""This is your shopping cart:
+    Items in your Cart: {items_list}
+    Item Prices: {item_prices}
+    Total Cost: £ {sum(item_prices)}""")
+    print("-" * 80)
 
+    # Display the user a clear menu and cart continuously until checkout
+    print("""Would you like to:
+    1. Add an item to your cart
+    2. Remove an item from your cart
+    3. View the total cost of your cart
+    4. Checkout""")
     print("-" * 80)
-    print("Would you like to: ")
-    print("1. Add an item to your cart")
-    print("2. Remove an item from your cart")
-    print("3. View the total cost of your cart")
-    print("4. Checkout")
-    print("-" * 80)
+
+    # Allowing the user to input their choice and removing unnecessary debugging statement
     choice = input("Enter the number of the option you would like to choose:\n")
     print("-" * 80)
+
     
     if choice == "4":
     # Exit from the program
